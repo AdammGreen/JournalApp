@@ -55,3 +55,22 @@ struct PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
 }
+// Add this at the bottom of Persistence.swift
+extension JournalEntry {
+    @objc var wrappedTitle: String {
+        title ?? "Untitled Entry"
+    }
+}
+
+// Make JournalEntry identifiable to work with ForEach
+extension JournalEntry: Identifiable {
+    public var id: UUID {
+        get { id_value ?? UUID() }
+        set { id_value = newValue }
+    }
+    
+    private var id_value: UUID? {
+        get { self.value(forKey: "id") as? UUID }
+        set { self.setValue(newValue, forKey: "id") }
+    }
+}

@@ -1,10 +1,3 @@
-//
-//  JournalAppApp.swift
-//  JournalApp
-//
-//  Created by Adam Daniel Green on 2/25/25.
-//
-
 import SwiftUI
 
 @main
